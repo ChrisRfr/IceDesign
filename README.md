@@ -18,3 +18,6 @@ __Features:__<br>
 . Up, Down, Left and Right arrows to Move a Gadget<br>
 . Shift + Up, Down, Left and Right to Resize a Gadget<br>
 . Del Key to Delete the Selected Gadget or Container<br>
+<br>
+To be able to use the Scintilla Gadget, you must add Scintilla.dll from C:\Program Files\PureBasic\Compilers<br>
+in the same folder, next to the exe.<br>
