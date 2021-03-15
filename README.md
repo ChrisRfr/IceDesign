@@ -22,5 +22,6 @@ __Features:__<br>
 To be able to use the Scintilla Gadget, you must add Scintilla.dll from C:\Program Files\PureBasic\Compilers<br>
 in the same folder, next to the exe.<br>
 <br>
-__Demo__<br>
-![Alt text](/gif_demo/IceDesign_Beta2_demo.gif?raw=true "IceDesign")<br/>
+![Alt text](/Images/IceDesign_2021-03-13.png?raw=true "IceDesign")<br><br>
+__Demo beta 3__<br><br>
+![Alt text](/gif_demo/IceDesign_Beta2_demo.gif?raw=true "IceDesign")<br>
