@@ -6,9 +6,10 @@ It is only available for Windows with real Gadgets captured and drawn and with f
 It is possible to Edit a Container and also to Edit a Container within another Container, up to 9 levels. The tabs or Scroll bars are active<br>
 <br>
 __Features:__<br>
-. Create Gadget by Lasso<br>
+. Create Gadget by Lasso, double clic or Drag'n Drop from the Gadgets list<br>
 . Select a Gadget with Left Click or Lasso<br>
 . Multiple Selection by lasso or with Ctrl+Left Click and grouped movement<br>
+. Change the tab of a Panel to see its content without the need to open the Panel
 . Group, UnGroup Gadget<br>
 . Align to Left, Right, Bottom, Top. Resize with Same Width, Height<br>
 . Left Doucle Click to Open a Container (Container, Panel and ScrollArea). Up to 9 levels<br>
