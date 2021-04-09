@@ -21,6 +21,6 @@ __Features:__<br>
 . Del Key to Delete the Selected Gadget or Container<br>
 . ...<br>
 <br>
-![Alt text](/Images/IceDesign_2021-03-13.png?raw=true "IceDesign")<br><br>
+![Alt text](/Images/IceDesign_demo.png?raw=true "IceDesign")<br><br>
 __Demo beta 3__<br><br>
 ![Alt text](/gif_demo/IceDesign_Beta2_demo.gif?raw=true "IceDesign")<br>
