@@ -5,7 +5,7 @@ __IceDesign is an engine to build a Modern GUI Designer__<br>
 It is only available for Windows with real Gadgets captured and drawn and with fluid and flicker-free movement.<br>
 It is possible to Edit a Container and also to Edit a Container within another Container, up to 9 levels. The tabs or Scroll bars are active<br>
 <br>
-__Features:__<br>
+**__Features:__**<br>
  - DPI aware
  - Light and Dark theme
  - Create Gadget With the selection rectangle (Lasso), double clic or Drag'n Drop from the Gadgets list 
@@ -36,7 +36,7 @@ __Features:__<br>
     - Include the event loop or the minimum required to run it (Repeat : Until WaitWindowEvent() = #PB_Event_CloseWindow).
     - The title block can be customized in IceDesign.ini file.
 - .....
-<br><br>
+<br><br><br>
 ![Alt text](/Images/IceDesign_demo.png?raw=true "IceDesign")<br><br><br>
 __Demo beta 3__<br><br>
 ![Alt text](/gif_demo/IceDesign_Beta2_demo.gif?raw=true "IceDesign")<br>
