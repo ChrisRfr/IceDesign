@@ -33,7 +33,7 @@ It is possible to Edit a Container and also to Edit a Container within another C
     - Hexa or RGB for the colors. 
     - Define the indentation between a number of spaces or Tab.
     - Include or not Gadget item examples.
-    - Include the event loop or the minimum required to run it (Repeat : Until WaitWindowEvent() = #PB_Event_CloseWindow).
+    - Include the event loop or the minimum required to run it.
     - The title block can be customized in IceDesign.ini file.
 - .....
 <br><br><br>
