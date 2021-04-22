@@ -21,6 +21,8 @@ It is possible to Edit a Container and also to Edit a Container within another C
  - Right Doucle Click or use the toolbar button to Close a Container and go back to the previous level
  - Grid, Grid size and Snap to Grid
  - Contextual menu according to the available options for the current item
+ - Add a menu, toolbar or status bar is done via the context menu from the main level
+ - Add a new tab or deleting the current tab is done via the context menu from the panel
  - Change the tab of a Panel to see its content without the need to open the Panel
  - Up, Down, Left and Right arrows to Move a Gadget
  - Shift + Up, Down, Left and Right to Resize a Gadget
