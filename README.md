@@ -40,6 +40,6 @@ It is possible to Edit a Container and also to Edit a Container within another C
     - The title block can be customized in IceDesign.ini file.
 - .....
 <br><br><br>
-![Alt text](/Images/IceDesign_demo.png?raw=true "IceDesign")<br><br><br><br>
+![Alt text](/Images/IceDesign_1280x720.png?raw=true "IceDesign GUI Designer")<br><br><br><br>
 __Demo Old beta 03__<br><br>
 ![Alt text](/gif_demo/IceDesign_Beta2_demo.gif?raw=true "IceDesign")<br>
