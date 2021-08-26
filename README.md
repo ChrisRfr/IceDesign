@@ -34,6 +34,7 @@ It is possible to Edit a Container and also to Edit a Container within another C
  - Preview from the generated and compiled source. Use the Esc key or click on the main window to close the preview
  - Create the code with multiple options: Copy to Clipboard, Save and open in a new Tab, Save the code As
     - For the code creation, choose between using constants or variables with Prefix and suffix for the variables name
+    - Add the Window name to Viriables or Constants name
     - Load or Catch Images
     - Hexa or RGB for the colors
     - Define the indentation between a number of spaces or Tab
