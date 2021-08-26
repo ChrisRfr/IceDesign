@@ -30,15 +30,17 @@ It is possible to Edit a Container and also to Edit a Container within another C
  - Del Key to Delete the Selected Gadget or Container
  - Full Color Requester with saving custom colors in IceDesign.ini
  - Save, Save As or Open IceDesign Form GUI
- - Preview from the generated and compiled source. Use the Esc key or click on the main window to close the preview.
+ - Import IceDesign Form GUI to load templates into the current design
+ - Preview from the generated and compiled source. Use the Esc key or click on the main window to close the preview
  - Create the code with multiple options: Copy to Clipboard, Save and open in a new Tab, Save the code As
-    - For the code creation, choose between using constants or variables with Prefix and suffix for the variables name.
-    - Load or Catch Images.
-    - Hexa or RGB for the colors. 
-    - Define the indentation between a number of spaces or Tab.
-    - Include or not Gadget item examples.
-    - Include the event loop or the minimum required to run it.
-    - The title block can be customized in IceDesign.ini file.
+    - For the code creation, choose between using constants or variables with Prefix and suffix for the variables name
+    - Load or Catch Images
+    - Hexa or RGB for the colors
+    - Define the indentation between a number of spaces or Tab
+    - Include or not Gadget item examples
+    - Include the event loop or the minimum required to run it
+    - The title block can be customized in IceDesign.ini file
+  - Load IcedDesign with a GUI form passed as a parameter (ex: IceDesign Template.icef)
 - .....
 <br><br><br><br>
 __Demo Old beta 03 engine__<br><br>
