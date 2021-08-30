@@ -5,7 +5,7 @@ __IceDesign is a New and Modern GUI Designer for PureBasic__<br>
 It is only available for Windows with real Gadgets captured and drawn and with fluid and flicker-free movement.<br>
 It is possible to Edit a Container and also to Edit a Container within another Container, up to 9 levels. The tabs or Scroll bars are active<br>
 <br>
-![Alt text](/Images/IceDesign_1280x720.png?raw=true "IceDesign GUI Designer")<br><br>
+![Alt text](/Images/IceDesign_1280x800.png?raw=true "IceDesign GUI Designer")<br><br>
 **__Features:__**<br>
  - DPI aware
  - Light and Dark theme
