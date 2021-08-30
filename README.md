@@ -1,4 +1,4 @@
-# IceDesign
+# IceDesign GUI Designer
 
 __IceDesign is a New and Modern GUI Designer for PureBasic__<br>
 <br>
@@ -43,6 +43,6 @@ It is possible to Edit a Container and also to Edit a Container within another C
     - The title block can be customized in IceDesign.ini file
   - Load IcedDesign with a GUI form passed as a parameter (ex: IceDesign Template.icef)
 - .....
-<br><br><br><br>
-__Demo Old beta 03 engine__<br><br>
-![Alt text](/gif_demo/IceDesign_Beta2_demo.gif?raw=true "IceDesign")<br>
+<br><br><br>
+__Import Demo__<br><br>
+![Alt text](/gif_demo/IceDesign_Import_Demo.gif?raw=true "IceDesign GUI Designer")<br>
