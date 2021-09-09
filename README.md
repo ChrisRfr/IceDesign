@@ -7,7 +7,6 @@ It is possible to Edit a Container and also to Edit a Container within another C
 <br>
 ![Alt text](/Images/IceDesign_1280x800.png?raw=true "IceDesign GUI Designer")<br><br>
 **__Features:__**<br>
- - DPI aware
  - Light and Dark theme
  - Create Gadget With the selection rectangle (Lasso), double clic or Drag'n Drop from the Gadgets list 
  - Select a Gadget with Left Click or Lasso 
