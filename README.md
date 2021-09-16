@@ -15,9 +15,9 @@ It is possible to Edit a Container and also to Edit a Container within another C
  - Update properties with multiple selections or group
  - Cut, Copy, Paste and Clone. Can be done between different levels
  - Group, UnGroup Gadget
- - Align to Left, Right, Bottom, Top. 
+ - Align to Left, Right, Bottom, Top 
  - Resize with Same Width, Height
- - Equal Space Horizontal, Vertical 
+ - Equal Space Horizontal, Vertical
  - Left Doucle Click or use the toolbar button to Open a Container (Container, Panel and ScrollArea). Up to 9 levels
  - Select directly a Child Gadget from a Container with Left Triple Click
  - Right Doucle Click or use the toolbar button to Close a Container and go back to the previous level
@@ -29,6 +29,12 @@ It is possible to Edit a Container and also to Edit a Container within another C
  - Up, Down, Left and Right arrows to Move a Gadget
  - Shift + Up, Down, Left and Right to Resize a Gadget
  - Del Key to Delete the Selected Gadget or Container
+ - Use Full or Short Name for Controls
+ - Auto rename the Controls Name when the caption is changed
+ - Anchor controls with left, right, top and(or) bottom lock when resizing the window
+ - Proportional resizing option for controls when resizing the window
+ - BindGadgetEvent property to write event procedures in the created code
+ - Support for some Windows Controls Styles 
  - Full Color Requester with saving custom colors in IceDesign.ini
  - Save, Save As or Open IceDesign Form GUI
  - Import IceDesign Form GUI to load templates into the current design
