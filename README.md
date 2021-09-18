@@ -48,7 +48,8 @@ It is possible to Edit a Container and also to Edit a Container within another C
     - Include or not Gadget item examples
     - Include the event loop or the minimum required to run it
     - The title block can be customized in IceDesign.ini file
-  - Load IcedDesign with a GUI form passed as a parameter (ex: IceDesign Template.icef)
+  - Run IceDesign with DPI parameter to create IceDesign_DPI.exe with the DpiAware manifest. The display will be With 100% scaling, probably sharper for 4K or other screens.
+  - Load IceDesign with a GUI form passed as a parameter (ex: IceDesign Template.icef)
 - .....
 <br><br><br>
 __Import Demo__<br><br>
