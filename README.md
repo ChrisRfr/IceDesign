@@ -36,6 +36,7 @@ It is possible to Edit a Container and also to Edit a Container within another C
  - BindGadgetEvent property to write event procedures in the created code
  - Support for some Windows Controls Styles 
  - Full Color Requester with saving custom colors in IceDesign.ini
+ - Display an image in background and adjust its transparency
  - Save, Save As or Open IceDesign Form GUI
  - Import IceDesign Form GUI to load templates into the current design
  - Preview from the generated and compiled source. Use the Esc key or click on the main window to close the preview
