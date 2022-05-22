@@ -236,7 +236,7 @@
 
 #DebugON            = #False    ; #False\#True
 
-XIncludeFile "Save_JSON.pbi"    ; Little John's module, Save JSON data with object members well-arranged: https://www.purebasic.fr/english/viewtopic.php?t=69100
+;XIncludeFile "Save_JSON.pbi"    ; Little John's module, Save JSON data with object members well-arranged: https://www.purebasic.fr/english/viewtopic.php?t=69100
 
 Structure ModelObjectStruct     ; Structure Model Gadget from Data Section. Loaded in a Map for easy access to models, Key = Str(GadgetType)
   Model.s
