@@ -236,7 +236,7 @@
 
 #DebugON            = #False    ; #False\#True
 
-;XIncludeFile "Save_JSON.pbi"    ; Little John's module, Save JSON data with object members well-arranged: https://www.purebasic.fr/english/viewtopic.php?t=69100
+;XIncludeFile "Save_JSON.pbi" : UseModule JSave   ; Little John's module, Save JSON data with object members well-arranged: https://www.purebasic.fr/english/viewtopic.php?t=69100
 
 Structure ModelObjectStruct     ; Structure Model Gadget from Data Section. Loaded in a Map for easy access to models, Key = Str(GadgetType)
   Model.s
@@ -354,6 +354,7 @@ Declare   EnumChildPB(Window = #PB_All)
 Declare.s AddWindowPBFlag(Window, Constants.s)
 Declare   AddWindowPB(Window)
 Declare.s GetToolTipText(Gadget)
+Declare.s GetFontText(Gadget)
 Declare.s CheckPBName(Name.s)
 Declare.s UniquePBName(BaseName.s, Caption.s)
 Declare.s AddGadgetPBFlag(Gadget, Constants.s)
@@ -969,6 +970,36 @@ Procedure.s GetToolTipText(Gadget)
   ProcedureReturn Trim(Buffer) 
 EndProcedure
 
+Procedure.s GetFontText(Gadget)
+  Protected hDC, FontID, FontAttrib.LOGFONT 
+  Protected FontName.s, FontSize, FontStyle.s
+  Static DefaultFont
+  
+  If DefaultFont = 0
+    Protected TempGadget = ButtonGadget(#PB_Any, 0, 0, 25, 25, "ABC123")
+    SetGadgetFont(TempGadget, #PB_Default)
+    DefaultFont = GetGadgetFont(TempGadget)
+    FreeGadget(TempGadget)
+  EndIf  
+    
+  FontID = GetGadgetFont(Gadget)
+  If FontID And FontID <> DefaultFont
+    GetObject_(FontID, SizeOf(FontAttrib), @FontAttrib)
+    FontName =  PeekS(@FontAttrib\lfFaceName[0])
+    hDC = GetDC_(GadgetID(Gadget))
+    FontSize = Int(Round((-FontAttrib \ lfHeight * 72 / GetDeviceCaps_(hDC, #LOGPIXELSY)), 1))
+    If FontAttrib\lfWeight > #FW_NORMAL         : FontStyle + "B": EndIf    ; Bold
+    If FontAttrib\lfItalic                      : FontStyle + "I" : EndIf   ; Italic
+    If FontAttrib\lfStrikeOut                   : FontStyle + "S" : EndIf   ; StrikeOut
+    If FontAttrib\lfUnderline                   : FontStyle + "U" : EndIf   ; Underline
+    If FontAttrib\lfQuality <> #DEFAULT_QUALITY : FontStyle + "H" : EndIf   ; High Quality
+    FontName + " | " + FontSize
+    If FontStyle : FontName +  " | " + FontStyle : EndIf
+  EndIf
+  
+  ProcedureReturn FontName
+EndProcedure
+
 Procedure.s CheckPBName(Name.s)
   Static CheckNameRegEx.i
   
@@ -1480,6 +1511,7 @@ Procedure AddGadgetPB(Gadget)
         If Gadget >= 50000 And Gadget < 60000
           \Type          = #PB_GadgetType_Panel
           \TabIndex      = Gadget - 50000
+          \FontText      = "#Nooo"
         Else
           \Type          = ObjectPB()\Type
           If \ParentGadget >= 50000 And \ParentGadget < 60000
@@ -1503,7 +1535,6 @@ Procedure AddGadgetPB(Gadget)
         \Option1         = ModelObject()\Option1
         \Option2         = ModelObject()\Option2
         \Option3         = ModelObject()\Option3
-        \FontText        = ModelObject()\FontText
         
         ; --------------------|---------------------|------------|-----------|-------------|
         ; Model               | Caption             | Option1    | Option2   | Option3     |
@@ -1593,6 +1624,11 @@ Procedure AddGadgetPB(Gadget)
                 \Option3 = "#Step:" + Str(GetGadgetAttribute(Gadget, #PB_ScrollBar_PageLength))
             EndSelect
         EndSelect
+        
+        \FontText = ModelObject()\FontText
+        If \FontText <> "#Nooo"
+          \FontText = GetFontText(Gadget)
+        EndIf
         
         \FrontColor = ModelObject()\FrontColor
         If \FrontColor <> "#Nooo"
@@ -1696,9 +1732,9 @@ Procedure SaveIceDesignForm(Window)
       JSONFile = CreateJSON(#PB_Any)
       If JSONFile
         InsertJSONList(JSONValue(JSONFile), LoadPB())
-        CompilerIf Defined(JSave::Save, #PB_Procedure)
-          JSave::InitObjectStr("", "Level, Gadget, Model, Type, Name, Container, ParentGadget, TabIndex, X, Y, Width, Height, Group, Caption, Option1, Option2, Option3, FontText, FrontColor, BackColor, Lock, Disable, Hide, BindGadget, ToolTip, LockLeft, LockRight, LockTop, LockBottom, ProportionalSize, Constants, Key")
-          If Not JSave::Save(JSONFile, FilePath)  
+        CompilerIf Defined(Save, #PB_Procedure)
+          InitObjectStr("", "Level, Gadget, Model, Type, Name, Container, ParentGadget, TabIndex, X, Y, Width, Height, Group, Caption, Option1, Option2, Option3, FontText, FrontColor, BackColor, Lock, Disable, Hide, BindGadget, ToolTip, LockLeft, LockRight, LockTop, LockBottom, ProportionalSize, Constants, Key")
+          If Not Save(JSONFile, FilePath)  
             MessageRequester("Warning", "There was an error saving IceDesign Form GUI (*.icef) file", #PB_MessageRequester_Warning|#PB_MessageRequester_Ok)  
           EndIf
         CompilerElse
