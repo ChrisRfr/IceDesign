@@ -971,7 +971,7 @@ Procedure.s GetToolTipText(Gadget)
 EndProcedure
 
 Procedure.s GetFontText(Gadget)
-  Protected hDC, FontID, FontAttrib.LOGFONT 
+  Protected hDC, FontID, FontAttrib.LOGFONT
   Protected FontName.s, FontSize, FontStyle.s
   Static DefaultFont
   
@@ -980,7 +980,7 @@ Procedure.s GetFontText(Gadget)
     SetGadgetFont(TempGadget, #PB_Default)
     DefaultFont = GetGadgetFont(TempGadget)
     FreeGadget(TempGadget)
-  EndIf  
+  EndIf
     
   FontID = GetGadgetFont(Gadget)
   If FontID And FontID <> DefaultFont
@@ -988,7 +988,7 @@ Procedure.s GetFontText(Gadget)
     FontName =  PeekS(@FontAttrib\lfFaceName[0])
     hDC = GetDC_(GadgetID(Gadget))
     FontSize = Int(Round((-FontAttrib \ lfHeight * 72 / GetDeviceCaps_(hDC, #LOGPIXELSY)), 1))
-    If FontAttrib\lfWeight > #FW_NORMAL         : FontStyle + "B": EndIf    ; Bold
+    If FontAttrib\lfWeight > #FW_NORMAL         : FontStyle + "B" : EndIf   ; Bold
     If FontAttrib\lfItalic                      : FontStyle + "I" : EndIf   ; Italic
     If FontAttrib\lfStrikeOut                   : FontStyle + "S" : EndIf   ; StrikeOut
     If FontAttrib\lfUnderline                   : FontStyle + "U" : EndIf   ; Underline
@@ -1079,12 +1079,12 @@ Procedure.s AddGadgetPBFlag(Gadget, Constants.s)
       
     Case #PB_GadgetType_ButtonImage   ;Ok
       If _IsFlag_(StyleFlag, #BS_PUSHLIKE | #BS_AUTOCHECKBOX)   ;Ok
-        Constants = ReplaceString(Constants, "Button_Toggle", "Button_Toggle(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Button_Toggle", "Button_Toggle(x)", #PB_String_NoCase)
       EndIf
       
     Case #PB_GadgetType_Calendar   ;Ok
       If Not(_IsExFlag_(ExStyleFlag, #WS_EX_CLIENTEDGE))   ;Ok
-        Constants = ReplaceString(Constants, "Calendar_Borderless", "Calendar_Borderless(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Calendar_Borderless", "Calendar_Borderless(x)", #PB_String_NoCase)
       EndIf  
       
     Case #PB_GadgetType_Canvas
@@ -1092,24 +1092,24 @@ Procedure.s AddGadgetPBFlag(Gadget, Constants.s)
         Constants = ReplaceString(Constants, "Canvas_Container", "Canvas_Container(x)", #PB_String_NoCase)
       EndIf
       If Not(_IsExFlag_(ExStyleFlag, #WS_EX_CLIENTEDGE))   ;Ok
-        Constants = ReplaceString(Constants, "Canvas_Border", "Canvas_Border(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Canvas_Border", "Canvas_Border(x)", #PB_String_NoCase)
       EndIf
-      ;Not Ok Constants = ReplaceString(Constants, "Canvas_ClipMouse", "Canvas_ClipMouse(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Canvas_ClipMouse", "Canvas_ClipMouse(x)", #PB_String_NoCase)
       If _IsFlag_(StyleFlag, #WS_GROUP | #WS_TABSTOP)   ;Ok
-        Constants = ReplaceString(Constants, "Canvas_Keyboard", "Canvas_Keyboard(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Canvas_Keyboard", "Canvas_Keyboard(x)", #PB_String_NoCase)
       EndIf
-      ;Not Ok Constants = ReplaceString(Constants, "Canvas_DrawFocus", "Canvas_DrawFocus(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Canvas_DrawFocus", "Canvas_DrawFocus(x)", #PB_String_NoCase)
       
     Case #PB_GadgetType_CheckBox   ;Ok
       If _IsFlag_(StyleFlag, #BS_CENTER)   ;Ok
-        Constants = ReplaceString(Constants, "CheckBox_Center", "CheckBox_Center(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "CheckBox_Center", "CheckBox_Center(x)", #PB_String_NoCase)
       Else
         If _IsFlag_(StyleFlag, #BS_RIGHT)   ;Ok
-          Constants = ReplaceString(Constants, "CheckBox_Right", "CheckBox_Right(x))", #PB_String_NoCase)
+          Constants = ReplaceString(Constants, "CheckBox_Right", "CheckBox_Right(x)", #PB_String_NoCase)
         EndIf
       EndIf
       If _IsFlag_(StyleFlag, #BS_3STATE)   ;Ok
-        Constants = ReplaceString(Constants, "CheckBox_ThreeState", "CheckBox_ThreeState(x))"	, #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "CheckBox_ThreeState", "CheckBox_ThreeState(x)"	, #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #BS_BOTTOM)   ;Ok
         Constants = ReplaceString(Constants, "#BS_Bottom", "#BS_Bottom(x)", #PB_String_NoCase)
@@ -1126,29 +1126,29 @@ Procedure.s AddGadgetPBFlag(Gadget, Constants.s)
       
     Case #PB_GadgetType_ComboBox   ;Ok	
       If _IsFlag_(StyleFlag, #PB_ComboBox_LowerCase)   ;Ok  (#CBS_LowerCase)
-        Constants = ReplaceString(Constants, "ComboBox_LowerCase", "ComboBox_LowerCase(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ComboBox_LowerCase", "ComboBox_LowerCase(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #PB_ComboBox_UpperCase)   ;Ok  (#CBS_UpperCase)
-        Constants = ReplaceString(Constants, "ComboBox_UpperCase", "ComboBox_UpperCase(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ComboBox_UpperCase", "ComboBox_UpperCase(x)", #PB_String_NoCase)
       EndIf
       Protected ChildGadget = GetWindow_(Handle, #GW_CHILD)
       If ChildGadget
         Protected Buffer.s = Space(64)
         If GetClassName_(ChildGadget, @Buffer, 64)
           If Buffer = "Edit"
-            Constants = ReplaceString(Constants, "ComboBox_Editable", "ComboBox_Editable(x))", #PB_String_NoCase)   ;Ok
+            Constants = ReplaceString(Constants, "ComboBox_Editable", "ComboBox_Editable(x)", #PB_String_NoCase)   ;Ok
           ElseIf Buffer = "ComboBox"
             ChildGadget = GetWindow_(ChildGadget, #GW_CHILD)
             If ChildGadget
               Buffer = Space(64)
               If GetClassName_(ChildGadget, @Buffer, 64)
                 If Buffer = "Edit"
-                  Constants = ReplaceString(Constants, "ComboBox_Editable", "ComboBox_Editable(x))", #PB_String_NoCase)   ;Ok
-                  Constants = ReplaceString(Constants, "ComboBox_Image", "ComboBox_Image(x))", #PB_String_NoCase)         ;Ok
+                  Constants = ReplaceString(Constants, "ComboBox_Editable", "ComboBox_Editable(x)", #PB_String_NoCase)   ;Ok
+                  Constants = ReplaceString(Constants, "ComboBox_Image", "ComboBox_Image(x)", #PB_String_NoCase)         ;Ok
                 EndIf
               EndIf
             Else
-              Constants = ReplaceString(Constants, "ComboBox_Image", "ComboBox_Image(x))", #PB_String_NoCase)    ;Ok
+              Constants = ReplaceString(Constants, "ComboBox_Image", "ComboBox_Image(x)", #PB_String_NoCase)    ;Ok
             EndIf
           EndIf
         EndIf
@@ -1156,30 +1156,30 @@ Procedure.s AddGadgetPBFlag(Gadget, Constants.s)
       
     Case #PB_GadgetType_Container   ;Ok The order if,elseif is important
       If _IsFlag_(StyleFlag, #WS_BORDER)   ;Ok
-        Constants = ReplaceString(Constants, "Container_Flat", "Container_Flat(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Container_Flat", "Container_Flat(x)", #PB_String_NoCase)
       ElseIf _IsExFlag_(ExStyleFlag, #WS_EX_WINDOWEDGE)   ;Ok
-        Constants = ReplaceString(Constants, "Container_Raised", "Container_Raised(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Container_Raised", "Container_Raised(x)", #PB_String_NoCase)
       ElseIf _IsExFlag_(ExStyleFlag, #WS_EX_STATICEDGE)   ;Ok
-        Constants = ReplaceString(Constants, "Container_Single", "Container_Single(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Container_Single", "Container_Single(x)", #PB_String_NoCase)
       ElseIf _IsExFlag_(ExStyleFlag, #WS_EX_CLIENTEDGE)   ;Ok
-        Constants = ReplaceString(Constants, "Container_Double", "Container_Double(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Container_Double", "Container_Double(x)", #PB_String_NoCase)
       Else
-        ;Constants = ReplaceString(Constants, "Container_BorderLess", "Container_BorderLess(x))", #PB_String_NoCase)   ; Default value
+        ;Constants = ReplaceString(Constants, "Container_BorderLess", "Container_BorderLess(x)", #PB_String_NoCase)   ; Default value
       EndIf
       
     Case #PB_GadgetType_Date   ;Ok
       If _IsFlag_(StyleFlag, #DTS_UPDOWN)   ;Ok
-        Constants = ReplaceString(Constants, "Date_UpDown", "Date_UpDown(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Date_UpDown", "Date_UpDown(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #DTS_SHOWNONE)   ;Ok
-        Constants = ReplaceString(Constants, "Date_CheckBox", "Date_CheckBox(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Date_CheckBox", "Date_CheckBox(x)", #PB_String_NoCase)
       EndIf
       
     Case #PB_GadgetType_Editor
       If _IsFlag_(StyleFlag, #ES_READONLY)   ;Ok
-        Constants = ReplaceString(Constants, "Editor_ReadOnly", "Editor_ReadOnly(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Editor_ReadOnly", "Editor_ReadOnly(x)", #PB_String_NoCase)
       EndIf
-      ;Not Ok Constants = ReplaceString(Constants, "Editor_WordWrap", "Editor_WordWrap(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Editor_WordWrap", "Editor_WordWrap(x)", #PB_String_NoCase)
       If _IsFlag_(StyleFlag, #ES_CENTER)   ;Ok
         Constants = ReplaceString(Constants, "#ES_Center", "#ES_Center(x)", #PB_String_NoCase)
       EndIf
@@ -1190,81 +1190,81 @@ Procedure.s AddGadgetPBFlag(Gadget, Constants.s)
       
     Case #PB_GadgetType_ExplorerCombo
       If Not(_IsFlag_(StyleFlag, #CBS_SIMPLE))
-        Constants = ReplaceString(Constants, "Explorer_Editable", "Explorer_Editable(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Explorer_Editable", "Explorer_Editable(x)", #PB_String_NoCase)
       EndIf
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_DrivesOnly", "Explorer_DrivesOnly(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoMyDocuments", "Explorer_NoMyDocuments(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_DrivesOnly", "Explorer_DrivesOnly(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoMyDocuments", "Explorer_NoMyDocuments(x)", #PB_String_NoCase)
       
     Case #PB_GadgetType_ExplorerList
       If Not(_IsExFlag_(ExStyleFlag, #WS_EX_CLIENTEDGE))   ;Ok
-        Constants = ReplaceString(Constants, "Explorer_BorderLess", "Explorer_BorderLess(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Explorer_BorderLess", "Explorer_BorderLess(x)", #PB_String_NoCase)
       EndIf 
       If _IsFlag_(StyleFlag, #LVS_SHOWSELALWAYS)   ;Ok
-        Constants = ReplaceString(Constants, "Explorer_AlwaysShowSelection", "Explorer_AlwaysShowSelection(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Explorer_AlwaysShowSelection", "Explorer_AlwaysShowSelection(x)", #PB_String_NoCase)
       EndIf
       If Not(_IsFlag_(StyleFlag, #LVS_SINGLESEL))   ;Ok
-        Constants = ReplaceString(Constants, "Explorer_MultiSelect", "Explorer_MultiSelect(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Explorer_MultiSelect", "Explorer_MultiSelect(x)", #PB_String_NoCase)
       EndIf
       If Not(_IsFlag_(StyleFlag, #WS_VSCROLL))   ;Ok
-        Constants = ReplaceString(Constants, "Explorer_NoFolders", "Explorer_NoFolders(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Explorer_NoFolders", "Explorer_NoFolders(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #LVS_NOSORTHEADER)   ;Ok
-        Constants = ReplaceString(Constants, "Explorer_NoSort", "Explorer_NoSort(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Explorer_NoSort", "Explorer_NoSort(x)", #PB_String_NoCase)
       EndIf
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_GridLines", "Explorer_GridLines(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_HeaderDragDrop", "Explorer_HeaderDragDrop(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_FullRowSelect", "Explorer_FullRowSelect(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoFiles", "Explorer_NoFiles(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoParentFolder", "Explorer_NoParentFolder(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoDirectoryChange", "Explorer_NoDirectoryChange(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoDriveRequester", "Explorer_NoDriveRequester(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoMyDocuments", "Explorer_NoMyDocuments(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_AutoSort", "Explorer_AutoSort(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_HiddenFiles", "Explorer_HiddenFiles(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_GridLines", "Explorer_GridLines(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_HeaderDragDrop", "Explorer_HeaderDragDrop(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_FullRowSelect", "Explorer_FullRowSelect(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoFiles", "Explorer_NoFiles(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoParentFolder", "Explorer_NoParentFolder(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoDirectoryChange", "Explorer_NoDirectoryChange(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoDriveRequester", "Explorer_NoDriveRequester(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoMyDocuments", "Explorer_NoMyDocuments(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_AutoSort", "Explorer_AutoSort(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_HiddenFiles", "Explorer_HiddenFiles(x)", #PB_String_NoCase)
       
     Case #PB_GadgetType_ExplorerTree
       If Not(_IsExFlag_(ExStyleFlag, #WS_EX_CLIENTEDGE))   ;Ok
-        Constants = ReplaceString(Constants, "Explorer_BorderLess", "Explorer_BorderLess(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Explorer_BorderLess", "Explorer_BorderLess(x)", #PB_String_NoCase)
       EndIf 
       If _IsFlag_(StyleFlag, #TVS_SHOWSELALWAYS)   ;Ok
-        Constants = ReplaceString(Constants, "Explorer_AlwaysShowSelection", "Explorer_AlwaysShowSelection(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Explorer_AlwaysShowSelection", "Explorer_AlwaysShowSelection(x)", #PB_String_NoCase)
       EndIf
       If Not(_IsFlag_(StyleFlag, #TVS_HASLINES))   ;Ok
-        Constants = ReplaceString(Constants, "Explorer_NoLines", "Explorer_NoLines(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Explorer_NoLines", "Explorer_NoLines(x)", #PB_String_NoCase)
       EndIf
       If Not(_IsFlag_(StyleFlag, #TVS_HASBUTTONS))   ;Ok
-        Constants = ReplaceString(Constants, "Explorer_NoButtons", "Explorer_NoButtons(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Explorer_NoButtons", "Explorer_NoButtons(x)", #PB_String_NoCase)
       EndIf
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoFiles", "Explorer_NoFiles(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoDriveRequester", "Explorer_NoDriveRequester(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoMyDocuments", "Explorer_NoMyDocuments(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Explorer_AutoSort", "Explorer_AutoSort(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoFiles", "Explorer_NoFiles(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoDriveRequester", "Explorer_NoDriveRequester(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_NoMyDocuments", "Explorer_NoMyDocuments(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Explorer_AutoSort", "Explorer_AutoSort(x)", #PB_String_NoCase)
       
     Case #PB_GadgetType_Frame   ;Ok The order if,elseif is important
       If _IsFlag_(StyleFlag, #WS_BORDER)   ;Ok
-        Constants = ReplaceString(Constants, "Frame_Flat", "Frame_Flat(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Frame_Flat", "Frame_Flat(x)", #PB_String_NoCase)
       ElseIf _IsExFlag_(ExStyleFlag, #WS_EX_STATICEDGE)   ;Ok
-        Constants = ReplaceString(Constants, "Frame_Single", "Frame_Single(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Frame_Single", "Frame_Single(x)", #PB_String_NoCase)
       ElseIf _IsExFlag_(ExStyleFlag, #WS_EX_CLIENTEDGE)   ;Ok
-        Constants = ReplaceString(Constants, "Frame_Double", "Frame_Double(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Frame_Double", "Frame_Double(x)", #PB_String_NoCase)
       EndIf
       
       ; Case #PB_GadgetType_HyperLink   ;Not Ok
-      ;Not Ok  Constants = ReplaceString(Constants, "HyperLink_Underline", "HyperLink_Underline(x))", #PB_String_NoCase)
+      ;Not Ok  Constants = ReplaceString(Constants, "HyperLink_Underline", "HyperLink_Underline(x)", #PB_String_NoCase)
       
     Case #PB_GadgetType_Image   ;Ok
       If _IsExFlag_(ExStyleFlag, #WS_EX_CLIENTEDGE)   ;Ok
-        Constants = ReplaceString(Constants, "Image_Border", "Image_Border(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Image_Border", "Image_Border(x)", #PB_String_NoCase)
       ElseIf _IsExFlag_(ExStyleFlag, #WS_EX_WINDOWEDGE)   ;Ok
-        Constants = ReplaceString(Constants, "Image_Raised", "Image_Raised(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Image_Raised", "Image_Raised(x)", #PB_String_NoCase)
       EndIf
       
     Case #PB_GadgetType_ListIcon
       If Not(_IsFlag_(StyleFlag, #LVS_SINGLESEL))   ;Ok
-        Constants = ReplaceString(Constants, "ListIcon_MultiSelect", "ListIcon_MultiSelect(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ListIcon_MultiSelect", "ListIcon_MultiSelect(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #LVS_SHOWSELALWAYS)   ;Ok
-        Constants = ReplaceString(Constants, "ListIcon_AlwaysShowSelection", "ListIcon_AlwaysShowSelection(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ListIcon_AlwaysShowSelection", "ListIcon_AlwaysShowSelection(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #LVS_NOCOLUMNHEADER)
         Constants = ReplaceString(Constants, "#LVS_NoColumnHeader", "#LVS_NoColumnHeader(x)", #PB_String_NoCase)
@@ -1272,18 +1272,18 @@ Procedure.s AddGadgetPBFlag(Gadget, Constants.s)
       If _IsFlag_(StyleFlag, #LVS_NOSCROLL)
         Constants = ReplaceString(Constants, "#LVS_NoScroll", "#LVS_NoScroll(x)", #PB_String_NoCase)
       EndIf
-      ;Not Ok Constants = ReplaceString(Constants, "ListIcon_CheckBoxes", "ListIcon_CheckBoxes(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "ListIcon_ThreeState", "ListIcon_ThreeState(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "ListIcon_GridLines", "ListIcon_GridLines(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "ListIcon_FullRowSelect", "ListIcon_FullRowSelect(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "ListIcon_HeaderDragDrop", "ListIcon_HeaderDragDrop(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "ListIcon_CheckBoxes", "ListIcon_CheckBoxes(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "ListIcon_ThreeState", "ListIcon_ThreeState(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "ListIcon_GridLines", "ListIcon_GridLines(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "ListIcon_FullRowSelect", "ListIcon_FullRowSelect(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "ListIcon_HeaderDragDrop", "ListIcon_HeaderDragDrop(x)", #PB_String_NoCase)
       
     Case #PB_GadgetType_ListView   ;Ok
       If _IsFlag_(StyleFlag, #LBS_MULTIPLESEL)   ;Ok
-        Constants = ReplaceString(Constants, "ListView_ClickSelect", "ListView_ClickSelect(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ListView_ClickSelect", "ListView_ClickSelect(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #LBS_EXTENDEDSEL)   ;Ok
-        Constants = ReplaceString(Constants, "ListView_MultiSelect", "ListView_MultiSelect(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ListView_MultiSelect", "ListView_MultiSelect(x)", #PB_String_NoCase)
         ;Same Constants = ReplaceString(Constants, "#LBS_ExtendedSel", "#LBS_ExtendedSel(x)", #PB_String_NoCase)
       EndIf   
       If _IsFlag_(StyleFlag, #LBS_MULTICOLUMN)
@@ -1291,17 +1291,17 @@ Procedure.s AddGadgetPBFlag(Gadget, Constants.s)
       EndIf
       
       ; Case #PB_GadgetType_OpenGL   ;Not Ok
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_Keyboard", "OpenGL_Keyboard(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_NoFlipSynchronization", "OpenGL_NoFlipSynchronization(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_FlipSynchronization", "OpenGL_FlipSynchronization(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_NoDepthBuffer", "OpenGL_NoDepthBuffer(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_16BitDepthBuffer", "OpenGL_16BitDepthBuffer(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_24BitDepthBuffer", "OpenGL_24BitDepthBuffer(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_NoStencilBuffer", "OpenGL_NoStencilBuffer(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_8BitStencilBuffer", "OpenGL_8BitStencilBuffer(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_NoAccumulationBuffer", "OpenGL_NoAccumulationBuffer(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_32BitAccumulationBuffer", "OpenGL_32BitAccumulationBuffer(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_64BitAccumulationBuffer", "OpenGL_64BitAccumulationBuffer(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_Keyboard", "OpenGL_Keyboard(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_NoFlipSynchronization", "OpenGL_NoFlipSynchronization(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_FlipSynchronization", "OpenGL_FlipSynchronization(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_NoDepthBuffer", "OpenGL_NoDepthBuffer(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_16BitDepthBuffer", "OpenGL_16BitDepthBuffer(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_24BitDepthBuffer", "OpenGL_24BitDepthBuffer(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_NoStencilBuffer", "OpenGL_NoStencilBuffer(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_8BitStencilBuffer", "OpenGL_8BitStencilBuffer(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_NoAccumulationBuffer", "OpenGL_NoAccumulationBuffer(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_32BitAccumulationBuffer", "OpenGL_32BitAccumulationBuffer(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "OpenGL_64BitAccumulationBuffer", "OpenGL_64BitAccumulationBuffer(x)", #PB_String_NoCase)
       
     Case #PB_GadgetType_Option   ;Ok
       If _IsFlag_(StyleFlag, #BS_BOTTOM)   ;Ok
@@ -1322,62 +1322,62 @@ Procedure.s AddGadgetPBFlag(Gadget, Constants.s)
       
     Case #PB_GadgetType_ProgressBar   ;Ok
       If _IsFlag_(StyleFlag, #PBS_SMOOTH)   ;Ok
-        Constants = ReplaceString(Constants, "ProgressBar_Smooth", "ProgressBar_Smooth(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ProgressBar_Smooth", "ProgressBar_Smooth(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #PBS_VERTICAL)   ;Ok
-        Constants = ReplaceString(Constants, "ProgressBar_Vertical", "ProgressBar_Vertical(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ProgressBar_Vertical", "ProgressBar_Vertical(x)", #PB_String_NoCase)
       EndIf
       
     Case #PB_GadgetType_ScrollArea
       If _IsExFlag_(ExStyleFlag, #WS_EX_WINDOWEDGE)   ;Ok
-        Constants = ReplaceString(Constants, "ScrollArea_Raised", "ScrollArea_Raised(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ScrollArea_Raised", "ScrollArea_Raised(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #WS_BORDER)   ;Ok
-        Constants = ReplaceString(Constants, "ScrollArea_Flat", "ScrollArea_Flat(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ScrollArea_Flat", "ScrollArea_Flat(x)", #PB_String_NoCase)
       EndIf
       If _IsExFlag_(ExStyleFlag, #WS_EX_STATICEDGE)   ;Ok
-        Constants = ReplaceString(Constants, "ScrollArea_Single", "ScrollArea_Single(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ScrollArea_Single", "ScrollArea_Single(x)", #PB_String_NoCase)
       EndIf
       If Not(_IsExFlag_(ExStyleFlag, #WS_EX_CLIENTEDGE))   ;Ok
-        Constants = ReplaceString(Constants, "ScrollArea_BorderLess", "ScrollArea_BorderLess(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ScrollArea_BorderLess", "ScrollArea_BorderLess(x)", #PB_String_NoCase)
       EndIf
-      ;Not Ok Constants = ReplaceString(Constants, "ScrollArea_Center", "ScrollArea_Center(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "ScrollArea_Center", "ScrollArea_Center(x)", #PB_String_NoCase)
       
     Case #PB_GadgetType_ScrollBar   ;Ok
       If _IsFlag_(StyleFlag, #SBS_VERT)   ;Ok
-        Constants = ReplaceString(Constants, "ScrollBar_Vertical", "ScrollBar_Vertical(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "ScrollBar_Vertical", "ScrollBar_Vertical(x)", #PB_String_NoCase)
       EndIf
       
     Case #PB_GadgetType_Spin
       If _IsFlag_(StyleFlag, #ES_READONLY)   ;Ok
-        Constants = ReplaceString(Constants, "Spin_ReadOnly", "Spin_ReadOnly(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Spin_ReadOnly", "Spin_ReadOnly(x)", #PB_String_NoCase)
       EndIf
-      ;Not Ok Constants = ReplaceString(Constants, "Spin_Numeric", "Spin_Numeric(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Spin_Numeric", "Spin_Numeric(x)", #PB_String_NoCase)
       If _IsFlag_(StyleFlag, #ES_NUMBER)
         Constants = ReplaceString(Constants, "_#ES_Number", "_#ES_Number(x)", #PB_String_NoCase)
       EndIf
       
       ; Case #PB_GadgetType_Splitter   ;Not Ok
-      ;Not Ok Constants = ReplaceString(Constants, "Splitter_Vertical", "Splitter_Vertical(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Splitter_Separator", "Splitter_Separator(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Splitter_FirstFixed", "Splitter_FirstFixed(x))", #PB_String_NoCase)
-      ;Not Ok Constants = ReplaceString(Constants, "Splitter_SecondFixed", "Splitter_SecondFixed(x))", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Splitter_Vertical", "Splitter_Vertical(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Splitter_Separator", "Splitter_Separator(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Splitter_FirstFixed", "Splitter_FirstFixed(x)", #PB_String_NoCase)
+      ;Not Ok Constants = ReplaceString(Constants, "Splitter_SecondFixed", "Splitter_SecondFixed(x)", #PB_String_NoCase)
       
     Case #PB_GadgetType_String
       If _IsFlag_(StyleFlag, #ES_PASSWORD)   ;Ok
-        Constants = ReplaceString(Constants, "String_Password", "String_Password(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "String_Password", "String_Password(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #ES_READONLY)   ;Ok
-        Constants = ReplaceString(Constants, "String_ReadOnly", "String_ReadOnly(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "String_ReadOnly", "String_ReadOnly(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #ES_NUMBER)    ;Ok
-        Constants = ReplaceString(Constants, "String_Numeric", "String_Numeric(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "String_Numeric", "String_Numeric(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #ES_LOWERCASE)  ;Ok
-        Constants = ReplaceString(Constants, "String_LowerCase", "String_LowerCase(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "String_LowerCase", "String_LowerCase(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #ES_UPPERCASE)  ;Ok
-        Constants = ReplaceString(Constants, "String_UpperCase", "String_UpperCase(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "String_UpperCase", "String_UpperCase(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #ES_CENTER)
         Constants = ReplaceString(Constants, "#ES_Center", "#ES_Center(x)", #PB_String_NoCase)
@@ -1392,18 +1392,18 @@ Procedure.s AddGadgetPBFlag(Gadget, Constants.s)
         Constants = ReplaceString(Constants, "#ES_Right", "#ES_Right(x)", #PB_String_NoCase)
       EndIf
       If Not(_IsExFlag_(ExStyleFlag, #WS_EX_CLIENTEDGE)) ;Ok
-        Constants = ReplaceString(Constants, "String_BorderLess", "String_BorderLess(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "String_BorderLess", "String_BorderLess(x)", #PB_String_NoCase)
       EndIf 
       
     Case #PB_GadgetType_Text   ;Ok
       If _IsFlag_(StyleFlag, #ES_CENTER)   ;Ok
-        Constants = ReplaceString(Constants, "Text_Center", "Text_Center(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Text_Center", "Text_Center(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #ES_RIGHT)   ;Ok
-        Constants = ReplaceString(Constants, "Text_Right", "Text_Right(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Text_Right", "Text_Right(x)", #PB_String_NoCase)
       EndIf
       If _IsExFlag_(ExStyleFlag, #WS_EX_CLIENTEDGE)   ;Ok
-        Constants = ReplaceString(Constants, "Text_Border", "Text_Border(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Text_Border", "Text_Border(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #SS_ENDELLIPSIS)
         Constants = ReplaceString(Constants, "#SS_EndEllipsis", "#SS_EndEllipsis(x)", #PB_String_NoCase)
@@ -1417,26 +1417,26 @@ Procedure.s AddGadgetPBFlag(Gadget, Constants.s)
       
     Case #PB_GadgetType_TrackBar   ;Ok
       If _IsFlag_(StyleFlag, #TBS_AUTOTICKS)   ;Ok
-        Constants = ReplaceString(Constants, "TrackBar_Ticks", "TrackBar_Ticks(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "TrackBar_Ticks", "TrackBar_Ticks(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #TBS_VERT)   ;Ok
-        Constants = ReplaceString(Constants, "TrackBar_Vertical", "TrackBar_Vertical(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "TrackBar_Vertical", "TrackBar_Vertical(x)", #PB_String_NoCase)
       EndIf
       
     Case #PB_GadgetType_Tree
       If _IsFlag_(StyleFlag, #TVS_SHOWSELALWAYS)   ;Ok
-        Constants = ReplaceString(Constants, "Tree_AlwaysShowSelection", "Tree_AlwaysShowSelection(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Tree_AlwaysShowSelection", "Tree_AlwaysShowSelection(x)", #PB_String_NoCase)
       EndIf
       If Not(_IsFlag_(StyleFlag, #TVS_HASLINES))   ;Ok
-        Constants = ReplaceString(Constants, "Tree_NoLines", "Tree_NoLines(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Tree_NoLines", "Tree_NoLines(x)", #PB_String_NoCase)
       EndIf
       If Not(_IsFlag_(StyleFlag, #TVS_HASBUTTONS))   ;Ok
-        Constants = ReplaceString(Constants, "Tree_NoButtons", "Tree_NoButtons(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Tree_NoButtons", "Tree_NoButtons(x)", #PB_String_NoCase)
       EndIf
       If _IsFlag_(StyleFlag, #TVS_CHECKBOXES)   ;Ok
-        Constants = ReplaceString(Constants, "Tree_CheckBoxes", "Tree_CheckBoxes(x))", #PB_String_NoCase)
+        Constants = ReplaceString(Constants, "Tree_CheckBoxes", "Tree_CheckBoxes(x)", #PB_String_NoCase)
       EndIf
-      ;Not OK Constants = ReplaceString(Constants, "Tree_ThreeState", "Tree_ThreeState(x))", #PB_String_NoCase)
+      ;Not OK Constants = ReplaceString(Constants, "Tree_ThreeState", "Tree_ThreeState(x)", #PB_String_NoCase)
       
   EndSelect
   
@@ -1787,6 +1787,6 @@ Procedure PBForm2IceDesign(Window = #PB_All)
   ClearMap(ModelObject()) : ClearList(ObjectPB()) : ClearList(LoadPB())
 EndProcedure
 
-; IDE Options = PureBasic 5.73 LTS (Windows - x64)
+; IDE Options = PureBasic 6.00 LTS (Windows - x64)
 ; Folding = ----------
 ; EnableXP
