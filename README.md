@@ -7,7 +7,11 @@ It is possible to Edit a Container and also to Edit a Container within another C
 <br>
 ![Alt text](/Images/IceDesign_Welcome.png?raw=true "IceDesign GUI Designer")<br><br>
 **__Features:__**<br>
- - Light and Dark theme
+ - DPI Aware. Except the form designer element which stays at 100% and which generates the same exact code for the controls positions/sizes.
+ - IceDesign is available in English and French and ready to receive other languages in future
+ - Choose IceDesign Background Color
+ - Multi-Language support to help create multi-language apps at the design stage
+ - Toolbar with icons and texts or only icons  with their tooltips.
  - Create Gadget With the selection rectangle (Lasso), double clic or Drag'n Drop from the Gadgets list 
  - Select a Gadget with Left Click or Lasso 
  - Multiple Selection by lasso or with Ctrl+Left Click
