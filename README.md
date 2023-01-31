@@ -6,7 +6,7 @@ It is only available for Windows with real Gadgets captured and drawn and with f
 It is possible to Edit a Container and also to Edit a Container within another Container, up to 9 levels. The tabs or Scroll bars are active<br>
 <br>
 ![Alt text](/Images/IceDesign_Welcome.png?raw=true "IceDesign GUI Designer")<br><br>
-**__Features:__**<br>
+## __Features:__ <br>
  - DPI Aware. Except the form designer element which stays at 100% and which generates the same exact code for the controls positions/sizes.
  - IceDesign is available in English and French and ready to receive other languages in future
  - Choose IceDesign Background Color
@@ -56,6 +56,8 @@ It is possible to Edit a Container and also to Edit a Container within another C
   - Run IceDesign with DPI parameter to create IceDesign_DPI.exe with the DpiAware manifest. The display will be with 100% scaling, probably sharper for 4K or other screens.
   - Load IceDesign with a GUI form passed as a parameter (ex: IceDesign Template.icef)
 - .....
-<br><br><br>
-__Import Demo__<br><br>
+<br>
+
+## __Import Demo__<br>
+Other demos are available in gif_demo sub-folder<br><br>
 ![Alt text](/gif_demo/IceDesign_Import_Demo.gif?raw=true "IceDesign GUI Designer")<br>
