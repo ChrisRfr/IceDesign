@@ -9,6 +9,7 @@ It is possible to Edit a Container and also to Edit a Container within another C
 ## __Features:__ <br>
  - DPI Aware. Except the form designer element which stays at 100% and which generates the same exact code for the controls positions/sizes.
  - IceDesign is available in English and French and ready to receive other languages in future
+ - Undo / Redo functions
  - Choose IceDesign Background Color
  - Multi-Language support to help create multi-language apps at the design stage
  - Toolbar with icons and texts or only icons  with their tooltips.
