@@ -24,7 +24,6 @@ It is possible to Edit a Container and also to Edit a Container within another C
  - Resize with Same Width, Height
  - Equal Space Horizontal, Vertical
  - Left Doucle Click or use the toolbar button to Open a Container (Container, Panel and ScrollArea). Up to 9 levels
- - Select directly a Child Gadget from a Container with Left Triple Click
  - Right Doucle Click or use the toolbar button to Close a Container and go back to the previous level
  - Grid, Grid size and Snap to Grid
  - Contextual menu according to the available options for the current item
